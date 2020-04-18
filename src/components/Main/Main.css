@@ -1,0 +1,13 @@
+.colors {
+    background-color: rgb(253, 198, 16);
+    color: lightgray;
+    background-color: rgb(12, 12, 12)
+}
+
+#content-wrapper {
+    background-image: url("./binding_dark.png");
+}
+
+h1 {
+    color: lightgray;
+}

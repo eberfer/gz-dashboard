@@ -1,0 +1,14 @@
+.genreBox {
+    margin: 10px;
+    border-radius: 7px;
+    background-color: lightgray;
+    color: rgb(12, 12, 12)
+}
+
+.genreBox:hover {
+    transition: 0.19s;
+    border: 1px solid rgb(253, 198, 16);
+    background-color: rgba(0, 0, 0, .50);
+    color: rgb(253, 198, 16);
+}
+

@@ -1,26 +1,30 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-
+import LeftMenu from "./components/LeftMenu/LeftMenu";
+import Main from "./components/Main/Main";
+import Footer from "./components/Footer/Footer";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <body>
+    
+    <div id="wrapper">
+    {/* <!-- Sidebar --> */}
+    <LeftMenu/>    ​
+    {/* <!-- Content Wrapper --> */}
+    <div id="content-wrapper" className="d-flex flex-column">    ​
+    {/* <!-- Main Content --> */}
+    <Main/>    ​
+    {/* <!-- Footer --> */}
+    <Footer/>
+        ​
     </div>
-  );
-}
-
-export default App;
+    {/* <!-- End of Content Wrapper --> */}    ​
+    </div>
+    {/* <!-- End of Page Wrapper --> */}
+    </body>
+    );
+  }
+  
+  export default App;
+  

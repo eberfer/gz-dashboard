@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css?family=Rajdhani&display=swap');
+
+.colors {
+    background-color: rgb(253, 198, 16);
+    color: lightgray;
+    background-color: rgb(12, 12, 12)
+}
+
+body {
+    font-family: 'Rajdhani', sans-serif;
+    letter-spacing: 2px;
+    color: lightgray;
+}
+
+a {
+    color:lightgray;
+}
+
+a:hover {
+    
+    font-weight: bold;
+    color: rgb(253, 198, 16);
+}
+
+.background {
+    background-color: rgba(0, 0, 0, .30);
+    border: 1px solid rgb(12, 12, 12);
+}
+
+.solidBackground {
+    background-color: rgb(12, 12, 12);
+}
+
+.boxHeaders {
+    padding-left: 10px;
+    border-top-left-radius: 7px ;
+    border-top-right-radius: 7px ;
+}
