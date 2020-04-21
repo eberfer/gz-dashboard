@@ -6,7 +6,7 @@ import Main from "./components/Main/Main";
 import Footer from "./components/Footer/Footer";
 function App() {
   return (
-    <body>
+    <React.Fragment>
     
     <div id="wrapper">
     {/* <!-- Sidebar --> */}
@@ -22,7 +22,7 @@ function App() {
     {/* <!-- End of Content Wrapper --> */}    ​
     </div>
     {/* <!-- End of Page Wrapper --> */}
-    </body>
+    </React.Fragment>
     );
   }
   

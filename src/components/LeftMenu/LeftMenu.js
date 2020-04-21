@@ -3,7 +3,7 @@ import "./LeftMenu.css"
 
 function LeftMenu(){
     return (
-        <React.Fragment className="textColor">
+        <div className="textColor">
             <ul className="navbar-nav backGround sidebar sidebar-dark accordion" id="accordionSidebar">
       ​
             {/* <!-- Sidebar - Brand --> */}
@@ -55,7 +55,7 @@ function LeftMenu(){
             {/* <!-- Divider --> */}
             <hr className="sidebar-divider d-none d-md-block"/>
             </ul>
-        </React.Fragment> 
+        </div> 
     )
 }
 export default LeftMenu;

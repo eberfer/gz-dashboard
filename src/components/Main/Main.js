@@ -1,13 +1,51 @@
-import React from "react";
+import React, { Component } from "react";
 import "./Main.css"
 import TopBar from "../TopBar/TopBar";
-import ProductsAmount from "./Data/ProductsAmount";
-import ProductsValue from "./Data/ProductsValue";
-import UsersAmount from "./Data/UsersAmount";
+import DataBoxes from "./DataBoxes";
 import Genre from "../Genre/Genre"
+import LastProduct from "./LastProduct"
 
-function Main(){
-    return (
+class Main extends Component {
+
+    constructor (props) {
+        super (props)
+      this.state = {
+        users: 0,
+        productsAmount: 0,
+        productsList: 0
+      }
+    }
+
+    //funcion para llamar a la Api
+
+    apiCall(url, consecuencia) {
+      fetch(url)
+      .then(response => response.json() )
+      .then(data => consecuencia(data) )
+      .catch(error => console.log(error)
+      )
+    }
+// Funcion que devuelve el APICALL
+    mostrarInfo = (data => {
+      console.log(data)
+      this.setState({
+        productsAmount: data.meta.totalAmount,
+        productsList: data.meta.totalGames
+      })
+    })
+// Cuando el componente se monta,. hacemos el llamado a la API
+    componentDidMount(){
+      console.log("Montado");
+      this.showGames()
+    }
+
+    showGames() {      
+      this.apiCall("http://localhost:3000/api/games", this.mostrarInfo)
+    }    
+
+    render() {
+
+      return  (
         <div id="content">
     ​
             {/* <!-- Topbar --> */}
@@ -24,31 +62,29 @@ function Main(){
     ​
               {/* <!-- My Webpage Content Row --> */}
               <div className="row">    ​
-                {/* <!-- Amount of Products in DB --> */}
-                <ProductsAmount/>    ​
-                {/* <!-- $$$ of all products in DB --> */}
-                <ProductsValue/>    ​
-                {/* <!-- Amount of users in DB --> */}
-                <UsersAmount/>
+                {/* <!-- Amount of users, Total Price and Total amount of Games --> */}
+                <DataBoxes 
+                color="primary"
+                boxName="Amount of Users"
+                boxData={this.state.users}
+                icon="fa-user-check"/>
+                <DataBoxes 
+                color="warning"
+                boxName="Total Products"
+                boxData={this.state.productsAmount}
+                icon="fa-clipboard-list"/>
+                <DataBoxes 
+                color="danger"
+                boxName="Total Price"
+                boxData={this.state.productsList}
+                icon="fa-dollar-sign"/>
+                
               </div>
     ​
               {/* <!-- Content Row --> */}
               <div className="row">
                 {/* <!-- Last Product in DB --> */}
-                <div className="col-lg-6 mb-4">
-                  <div className="mb-4">
-                    <div className="boxHeaders solidBackground py-3">
-                      <h6 className="m-0 font-weight-bold">Last product in Data Dase</h6>
-                    </div>
-                    <div className="card-body background">
-                      <div className="text-center">
-                        <img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{width: "25rem;"}} src="assets/images/product_dummy.svg" alt="image dummy"/>
-                      </div>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, consequatur explicabo officia inventore libero veritatis iure voluptate reiciendis a magnam, vitae, aperiam voluptatum non corporis quae dolorem culpa exercitationem ratione?</p>
-                      <a target="_blank" rel="nofollow" href="/">View product detail</a>
-                    </div>
-                  </div>
-                </div>
+                <LastProduct />
     ​
                 {/* <!-- Categories in DB --> */}
                 <div className="col-lg-6 mb-4">						
@@ -80,5 +116,6 @@ function Main(){
             {/* <!-- /.container-fluid --> */}
           </div>
     )
+  }
 }
 export default Main;

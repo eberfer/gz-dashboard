@@ -1,4 +1,5 @@
 import React from "react";
+import "./TopBar.css"
 
 
 function TopBar(){
@@ -18,7 +19,7 @@ function TopBar(){
                   <a className="nav-link dropdown-toggle" href="/" id="alertsDropdown">
                     <i className="fas fa-bell fa-fw"></i>
                     {/* <!-- Counter - Alerts --> */}
-                    <span className="badge badge-danger badge-counter">3+</span>
+                    <span className="badge personalBadge badge-counter">3+</span>
                   </a>
                 </li>
     ​
@@ -27,7 +28,7 @@ function TopBar(){
                   <a className="nav-link dropdown-toggle" href="/" id="messagesDropdown">
                     <i className="fas fa-envelope fa-fw"></i>
                     {/* <!-- Counter - Messages --> */}
-                    <span className="badge badge-danger badge-counter">7</span>
+                    <span className="badge personalBadge badge-counter">7</span>
                   </a>
                 </li>
     ​
@@ -37,7 +38,7 @@ function TopBar(){
                 <li className="nav-item dropdown no-arrow">
                   <a className="nav-link dropdown-toggle" href="/" id="userDropdown">
                     <span className="mr-2 d-none d-lg-inline text-gray-600 small">Walter White</span>
-                    <img className="img-profile rounded-circle" src="assets/images/dummy-avatar.jpg" width="60"/>
+                    <img className="img-profile rounded-circle" src="assets/images/dummy-avatar.jpg" width="60" alt="avatar"/>
                   </a>
                 </li>
     ​
