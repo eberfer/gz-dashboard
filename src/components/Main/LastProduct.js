@@ -9,10 +9,14 @@ function LastProduct(props){
                     </div>
                     <div className="card-body background">
                       <div className="text-center">
-                        <img className="img-fluid px-3 px-sm-4 mt-3 mb-4" width="25rem" src="assets/images/AC-o.jpg" alt="dummy"/>
+                        <img className="img-fluid px-3 px-sm-4 mt-3 mb-4" width="25rem" src="" alt="dummy"/>
                       </div>
-                      <p>{props.detail}</p>
-                      <a target="_blank" rel="nofollow" href="/">View product detail</a>
+                      <h3> {props.title} </h3>
+                      <p> {props.expansion} </p>
+                      <p> {props.detail} </p>
+                      <p> {props.price} </p>
+                       
+                      <a target="_blank" rel="nofollow" href={`https://localhost:3000/products/detail/${props.id}`} >View product detail</a>
                     </div>
                   </div>
                 </div>

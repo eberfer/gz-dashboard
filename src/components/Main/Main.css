@@ -11,3 +11,8 @@
 h1 {
     color: lightgray;
 }
+
+.title {
+    font-size: 15px;
+    letter-spacing: 2px;
+}

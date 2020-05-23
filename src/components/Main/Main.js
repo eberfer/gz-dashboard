@@ -10,9 +10,10 @@ class Main extends Component {
     constructor (props) {
         super (props)
       this.state = {
-        users: 0,
-        productsAmount: 0,
-        productsList: 0
+        users: "",
+        productsAmount: "",
+        productsList: "",
+        lastProduct: ""
       }
     }
 
@@ -26,22 +27,38 @@ class Main extends Component {
       )
     }
 // Funcion que devuelve el APICALL
-    mostrarInfo = (data => {
+    infoProductos = (data => {
       console.log(data)
+      console.log(this.state.lastProduct);
+      
+
+      //aca seteamos todos los valores que necesitamos del llamado a la API
       this.setState({
         productsAmount: data.meta.totalAmount,
-        productsList: data.meta.totalGames
+        productsList: data.meta.totalGames,
+        lastProduct: data.data[0][0]
+      })
+    })
+
+    infoUsuarios = (data => {
+      this.setState({
+        users: data.meta.total
       })
     })
 // Cuando el componente se monta,. hacemos el llamado a la API
     componentDidMount(){
       console.log("Montado");
       this.showGames()
+      this.showUsers()
     }
 
     showGames() {      
-      this.apiCall("http://localhost:3000/api/games", this.mostrarInfo)
-    }    
+      this.apiCall("http://localhost:3000/api/games", this.infoProductos)
+    } 
+    showUsers() {
+      this.apiCall("http://localhost:3000/api/users", this.infoUsuarios)
+    }
+      
 
     render() {
 
@@ -63,16 +80,19 @@ class Main extends Component {
               {/* <!-- My Webpage Content Row --> */}
               <div className="row">    ​
                 {/* <!-- Amount of users, Total Price and Total amount of Games --> */}
+                
                 <DataBoxes 
                 color="primary"
                 boxName="Amount of Users"
                 boxData={this.state.users}
                 icon="fa-user-check"/>
+
                 <DataBoxes 
                 color="warning"
                 boxName="Total Products"
                 boxData={this.state.productsAmount}
                 icon="fa-clipboard-list"/>
+
                 <DataBoxes 
                 color="danger"
                 boxName="Total Price"
@@ -84,7 +104,13 @@ class Main extends Component {
               {/* <!-- Content Row --> */}
               <div className="row">
                 {/* <!-- Last Product in DB --> */}
-                <LastProduct />
+                <LastProduct
+                id={this.state.lastProduct.id}
+                title={this.state.lastProduct.name}
+                expansion={this.state.lastProduct.expansion}
+                detail={this.state.lastProduct.detail}
+                price={this.state.lastProduct.price}
+                image={this.state.lastProduct.gameImg} />
     ​
                 {/* <!-- Categories in DB --> */}
                 <div className="col-lg-6 mb-4">						
